@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>你的名字-首页</title>
+		<style>
+/* 全局样式 */
+			*{
+				/* padding:0px; */
+				margin:0px;
+				box-sizing:border-box;}
+			html,
+			body{
+				height:100%;
+				color:#333;
+				font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+			}
+			a{
+				text-decoration: none;
+				color:#333;
+				transition: all 0.3s ease;
+			}
+			ul li{list-style: none;}
+			.clear{clear:both;}
+			body{
+				background:#f0f5f9;
+				line-height:1.6;
+			}
+			.w1100{
+				width:1100px;
+				margin:0 auto;
+				background:#fff;
+				box-shadow: 0 0 20px rgba(0,0,0,0.1);
+			}
+			.lr{float:right;}
+			.lf{float:left}
+			
+/* 导航栏样式 */
+			.header .nav{
+				height:60px;
+				line-height: 60px;
+				background: linear-gradient(135deg, #0066cc, #00aaff);
+				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			}
+			.header .nav ul li{
+				position: relative;
+				width:160px;
+				float:left;
+				transition: all 0.3s ease;
+			}
+			.header .nav ul li a{
+				display:block;
+				text-align: center;
+				color:#fff;
+				font-weight:500;
+				letter-spacing:1px;
+			}
+			.header .nav ul li a:hover,.header .nav ul li a.on{
+				background:rgba(255,255,255,0.2);
+				transform: translateY(-2px);
+			}
+			.header .nav ul li:after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				width: 0;
+				height: 3px;
+				background: #fff;
+				transition: all 0.3s ease;
+			}
+			.header .nav ul li:hover:after {
+				width: 60%;
+				left: 20%;
+			}
+
+/* banner 区域 */
+			.banner{
+				width:1100px;
+				margin:0 auto;
+				height:400px;
+				overflow:hidden;
+				position:relative;
+			}
+			.banner-slide {
+				width:100%;
+				height:100%;
+				background: url('image/2.gif') center/cover;
+				animation: bannerAnimation 16s infinite;
+			}
+			@keyframes bannerAnimation {
+				0%, 100% { background-image: url('image/6.gif'); }
+				33% { background-image: url('image/5.gif'); }
+				66% { background-image: url('image/4.gif'); }
+			}
+			.banner-title {
+				position: absolute;
+				bottom: 40px;
+				left: 40px;
+				color: white;
+				font-size: 36px;
+				font-weight: bold;
+				text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+				background: rgba(0,0,0,0.5);
+				padding: 10px 20px;
+				border-radius: 5px;
+			}
+
+/* 介绍区域 */
+			.about{
+				margin:0px auto;
+				margin-top:50px;
+				margin-bottom:60px;
+				position: relative;
+				padding:0px 30px;
+				color:#0066cc
+			}
+			.about h2{
+				font-size:32px;
+				font-weight:bold;
+				line-height: 50px;
+				color:#0066cc;
+				margin-bottom: 20px;
+				border-bottom: 2px solid #0066cc;
+				padding-bottom: 10px;
+				position: relative;
+			}
+			.about h2:after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 100px;
+				height: 2px;
+				background: #00aaff;
+			}
+			.about p{
+				margin-bottom: 15px;
+				line-height: 1.8;
+				font-size:16px;
+				text-indent:2rem;
+				color:#333;
+				letter-spacing: 1px;
+			}
+			.box01{
+				width:570px;
+				padding: 20px;
+				background: rgba(0,102,204,0.05);
+				border-radius: 8px;
+				box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+			}
+			.box02{
+				width:470px;
+				padding: 10px;
+				background: #fff;
+				border-radius: 8px;
+				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+				transform: rotate(2deg);
+				transition: all 0.5s ease;
+			}
+			.box02:hover {
+				transform: rotate(0deg) scale(1.02);
+			}
+			.box02 img{
+				width: 100%;
+				border-radius: 5px;
+				border: none;
+				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+			}
+			.box01 h3{
+				line-height: 40px;
+				font-size:20px;
+				color: #0066cc;
+			}
+
+/* 图集区域 */
+			.tuji{
+				background: linear-gradient(135deg, #f0f5f9, #e0ebf5);
+				padding:40px 0px;
+			}
+			.dg h2,.tuji h2{
+				text-align: center;
+				font-size:36px;
+				font-weight: 600;
+				line-height: 50px;
+				padding-bottom: 20px;
+				color: #0066cc;
+				position: relative;
+				margin-bottom: 30px;
+			}
+			.tuji h2:after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 80px;
+				height: 3px;
+				background: #00aaff;
+			}
+			.list {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				padding: 0 20px;
+			}
+			.list ul {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				max-width: 1000px;
+				margin: 0 auto;
+			}
+			.list ul li{
+				margin:15px;
+				position: relative;
+				overflow: hidden;
+				border-radius: 8px;
+				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+				transition: all 0.3s ease;
+			}
+			.list ul li:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+			}
+			.list ul li img{
+				width:250px;
+				height: 350px;
+				object-fit: cover;
+				transition: all 0.5s;
+			}
+			.list ul li p{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(0,102,204,0.8);
+				color: white;
+				padding: 10px;
+				transform: translateY(100%);
+				transition: all 0.3s ease;
+			}
+			.list ul li:hover p {
+				transform: translateY(0);
+			}
+			.list ul li:hover img {
+				transform: scale(1.05);
+			}
+
+/* 页脚样式 */
+			.footer{
+				background: linear-gradient(135deg, #0066cc, #00aaff);
+				color:#fff;
+				padding:40px 20px;
+				text-align: center;
+				font-size: 14px;
+			}
+			.footer p{
+				line-height: 24px;
+				margin: 5px 0;
+			}
+			.footer a {
+				color: #fff;
+				text-decoration: underline;
+			}
+			.footer-links {
+				display: flex;
+				justify-content: center;
+				margin-bottom: 20px;
+			}
+			.footer-links a {
+				margin: 0 15px;
+				font-weight: 500;
+			}
+			.social-icons {
+				margin-top: 20px;
+			}
+			.social-icons a {
+				display: inline-block;
+				margin: 0 10px;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				background: rgba(255,255,255,0.2);
+				border-radius: 50%;
+				transition: all 0.3s ease;
+			}
+			.social-icons a:hover {
+				background: rgba(255,255,255,0.3);
+				transform: translateY(-3px);
+			}
+		</style>
+	</head>
+	<body>
+<div class="w1100">	
+<div class="header">
+	<div class="nav">
+		<div class="menu">
+			<ul>
+				<li><a href="index.html">网站首页</a></li>
+				<li><a href="zuopin.html">作品介绍</a></li>
+				<li><a href="juese.html">角色介绍</a></li>
+				<li><a href="tupian.html">精美图片</a></li>
+				<li><a href="shipin.html">精彩视频</a></li> 
+				<li><a href="tongxilie.html">同系列电影</a></li>
+			</ul>
+		</div>	
+	</div>
+</div>
+<div class="banner">
+	<div class="banner-slide"></div>
+	<div class="banner-title">你的名字。</div>
+</div>
+		<div class="about">
+			
+			<div class="lr box01">
+				<h2>你的名字。</h2>
+			<p>你的名字。（日本名称：君の名は。），日本动画新海诚作品之一</p>
+			<p>《你的名字。》基于新海的原创剧本，电影围绕三叶，一个女孩不乐意住在农村，泷，一个东京的高中生，是一个建筑迷。这两个人有着命中注定的联系，但电影以不同寻常的方式实现的，至少可以说：他们在梦里交换着身体。新海诚的电影还展示了青春期真实的尴尬和窘迫，当三叶变为泷时，发现自己使用女性的"我"的称呼时朋友表现出的惊讶等，这笑料显得十分可爱，当然这样的情景也再其他电视剧中出现过。</p>
+			<p>然而这部电影关于的跨性别，是新海诚的独特之处，因为他们有着奇特的处境和陌生的渴望。他们互相留下笔记，甚至争吵。当然，一旦事情来到了这个阶段，就知道爱会绽放。但故事神秘之处是在故事开始前一个月的天空中出现一千年一次彗星。也预示着中心人物关系的萌芽。</p>
+			<p>剧情需要很多的曲折，但把焦点集中在三叶和泷各自的命运。配角人物，如美纪，泷暗恋的对象，和三叶的祖母一叶、妹妹四叶，主要是为突出两主人公特点和困境。但作为最高潮的部分，天空中爆发出耀眼的颜色和光，《你的名字。》就像梦几乎每个人觉得恋人太完美，相遇太短，结局太突然，欣喜溶解在稀薄的空气以保持清醒的生活。但仍有一些东西保留下来——记忆，尽管如此微弱。《你的名字。》得到的是一种痛苦的悲情和超自然美的交融，难以忘怀。</p>
+			</div>
+			<div class="lf box02">
+				<img src="image/你的名字.jpeg">
+			</div>
+			<div class="clear"></div>
+			<P>《你的名字。》讲述了少年少女互换身体，在各自的人生中度过一段时间；少年跨越时空，跨越时间，为了拯救死于陨石坠落的少女……这种浪漫与堪称完美的画面相结合，给观众们带去了一个无比美丽的爱情故事。电影中的小清新音乐也十分契合剧情跟画面，颇有浑然天成的感觉，令人怦然心动。</P>
+		</div>
+		<div class="tuji">
+			<h2>精彩图集</h2>
+			<div class="list">
+				<ul>
+					<li>
+						<img src="image/系守町风景.jpg">
+						<p>系守町风景</p>
+					</li>
+					<li>
+						<img src="image/起床.jpg">
+						<p>初次交换</p>
+					</li>
+					<li>
+						<img src="image/东京都市.jpg">
+						<p>东京都市</p>
+					</li>	
+					<li>
+						<img src="image/黄昏之时.jpeg">
+						<p>黄昏之时</p>
+					</li>
+					<!-- <li>
+						<img src="image/7.jpg">
+						<p>黄昏相遇</p>
+					</li>	 -->
+					<li>
+						<img src="image/彗星降临.jpg">
+						<p>彗星降临</p>
+					</li>
+					<li>
+						<img src="image/楼梯.jpg">
+						<p>楼梯相逢</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	<div class="footer">
+		<div class="footer-links">
+			<a href="#">关于我们</a>
+			<a href="#">联系方式</a>
+			<a href="#">版权声明</a>
+			<a href="#">隐私政策</a>
+		</div>
+		<P>Copyright ©2025 第五组（孙曙东，刘贺宇，石佳佳） 版权所有</P>
+		<P>网站所有素材来源于网络，如有侵权请联系QQ：479770018</P>
+		<div class="social-icons">
+			<a href="#">微</a>
+			<a href="#">Q</a>
+			<a href="#">抖</a>
+			<a href="#">B</a>
+		</div>
+	</div>
+		
+	</div>		
+	</body>
+</html>
